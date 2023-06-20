@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -25,6 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'admin',
     ];
 
     /**
@@ -65,5 +66,12 @@ class User extends Authenticatable
     public function favoris(): HasMany
     {
         return $this->hasMany(Favori::class);
+    }
+
+
+    /*auth admin filament */
+    public function canAccessfilement(Type $var = null)
+    {
+        return $sauf->admin ==1 ;
     }
 }
