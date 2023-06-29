@@ -2,8 +2,6 @@
 
 @section('main')
 
-    <h1 class="text-3xl font-bold underline">
-        Hello world !
-    </h1>
+<x-liste.products :products="$products"/>
 
 @endsection

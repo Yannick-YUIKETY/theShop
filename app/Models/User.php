@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Commentaire;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -70,8 +71,8 @@ class User extends Authenticatable implements FilamentUser
 
 
     /*auth admin filament */
-    public function canAccessfilement(Type $var = null)
+    public function canAccessFilament():bool
     {
-        return $sauf->admin ==1 ;
+        return $this->admin ==1 ;
     }
 }
